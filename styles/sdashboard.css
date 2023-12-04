@@ -1,0 +1,27 @@
+.overviews {
+    gap: 50px;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+
+}
+.overview-section {
+  grid-template-columns: auto 30%;
+  
+}
+
+.overviews-account  {
+  
+    gap: 20px;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.overview-clients {
+    background-color: blue;
+}
+
+.name-number {
+    gap: 30px;
+}
+
+.overviews-account > div {
+    padding: 20px;
+    background-color: var(--side-bar-color);
+}

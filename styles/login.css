@@ -1,0 +1,77 @@
+.container {
+    justify-content: center;
+    height: 100vh;
+}
+.login-section {
+    background-color: var(--side-bar-color);
+    height: 100%;
+    width: 100%;
+    grid-template-columns: auto auto ;
+   
+   
+
+}
+
+.login-section .welcoming-section {
+    height: 100%;
+    background-color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+}
+
+
+.login-section .bank-illustration {
+   height: 30%;
+    backdrop-filter:
+     blur(400px);
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.text {
+    margin-top: 80px;
+    padding: 8px;
+    color: white;
+    font-size: 50px;
+}
+
+.paragraph {
+    color: white;
+}
+
+.login-zone{
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 200px;
+
+}
+.loginzone-titile input ,.loginzone-titile button{
+    background-color: var(--body-color);
+    border: none;
+    outline: 0;
+    width: 63%;
+    padding: 10px;
+}
+
+.login-button {
+    padding-top:20px;
+}
+
+form  > div {
+    margin-top: 12px;
+}
+
+.loginzone-titile h4 {
+    font-size: x-large;
+}
+
+.loginzone-titile button{
+  
+    background-color: var(--primary-color);
+    color: white;
+}
+

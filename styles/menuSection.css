@@ -1,0 +1,60 @@
+.logo i {
+    font-size: 20px;
+}
+
+.sidebar {
+    padding: 20px;
+    margin: 10px;
+    width: 150px;
+    background-color: var(--primary-color);
+    height: 96vh;
+    border-radius: 5px;
+    position: fixed;
+}
+
+a {
+    color: white;
+}
+.sidebar .menus {
+
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 170px;
+
+}
+hr {
+    color: white;
+}
+
+.sidebar ul li {
+    margin-top: 23px;
+}
+
+.logo-container {
+    padding-bottom: 10px;
+}
+
+.logo {
+
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+.logo img {
+    width: 100%;
+
+}
+
+.society-name {
+    color: white;
+    font-weight: 900;
+}
+.active-menu {
+    background-color: var(--side-bar-color);
+    color: var(--primary-color);
+    padding: 8px;
+    border-radius: 5px;
+}

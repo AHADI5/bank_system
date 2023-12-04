@@ -1,0 +1,52 @@
+.menu-bar {
+    justify-content: space-around;
+    background-color: var(--side-bar-color);
+    padding: 15px;
+    color: var(--text-color);
+   width: 100%;
+
+    position: fixed;
+
+
+}
+.navigations ul  {
+    display: flex;
+    gap: 50px;
+}
+.navigations ul li  {
+    padding: 5px;
+
+}
+.not-profile {
+    gap: 50px;
+}
+
+.picture-name {
+    gap: 10px;
+}
+
+.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+.info-toggle {
+    position: relative;
+}
+.info-drop-down{
+    position: absolute;
+    gap: 10px;
+    background-color: var(--side-bar-color);
+    box-shadow: var(--boxshadow);
+    left: -30px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.picture-drop-down {
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inactive {
+    opacity: 0;
+}
