@@ -9,12 +9,12 @@
     <div class="menus flex">
         <div class="primary-menus">
             <ul>
-                <a href="./sectionDash.php" >
+                <!-- <a href="./sectionDash.php" >
                     <li >
                         <span class="icon-menu"> <i class="bi bi-house"></i> </span>
                         <span class="text">Home</span>
                     </li>
-                </a>
+                </a> -->
                 <a href="./depot.php" >
                     <li >
                         <span class="icon-menu"> <i class="bi bi-arrow-right-square"></i> </span>
@@ -34,18 +34,7 @@
                     </li>
                 </a>
 
-                <a href="./soldes.php">
-                    <li>
-                        <span class="icon-menu"><i class="bi bi-pie-chart"></i></span>
-                        <span class="text">Solde</span>
-                    </li>
-                </a>
-                <a href="./bloquer.php">
-                    <li>
-                        <span class="icon-menu"><i class="bi bi-door-closed"></i></span>
-                        <span class="text">Bloquer</span>
-                    </li>
-                </a>
+               
 
             </ul>
         </div>

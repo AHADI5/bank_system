@@ -28,29 +28,57 @@ function sendDat(form) {
                     const element = parseInt(array[index]);
                     
                 }
-    
-                Operation(array[1],status,operation,array[0], array[2]);
-                setTimeout(() =>{
-                    sectionResult.innerHTML = `
-                    <div class="notifier">
-                        <div class="notifier-message flex"> 
-                            <div class= "il-icon flex" >
-                                <img src="../../imgs/icons8-initiate-money-transfer-48.png" alt="">
+                //Checking Status 
+                let id = parseInt(document.querySelector("#idCompte").value);
+                checkStatus(array[2] , (checkStatus) => {
+                    if (checkStatus === 0) {
+                        setTimeout(() =>{
+                            sectionResult.innerHTML = `
+                            <div class="notifier">
+                                <div class="notifier-message flex"> 
+                                    <div class= "il-icon flex" >
+                                        <img src="../../imgs/icons8-initiate-money-transfer-48.png" alt="">
+                                    </div>
+                                    <div class="notifier-msg flex"> 
+                                        <p>Failed , This Account is Bloqued </p>
+                                    </div>
+                                </div>
+                              
                             </div>
-                            <div class="notifier-msg flex"> 
-                                <p>Withdraw done Successfully </p>
+                            `;
+                            sectionResult.style.background = 'red';
+                            sectionResult.style.color = 'white';
+            
+                        },900);
+                    } else {
+                        Operation(array[1],status,operation,array[0], array[2]);
+                        setTimeout(() =>{
+                            sectionResult.innerHTML = `
+                            <div class="notifier">
+                                <div class="notifier-message flex"> 
+                                    <div class= "il-icon flex" >
+                                        <img src="../../imgs/icons8-initiate-money-transfer-48.png" alt="">
+                                    </div>
+                                    <div class="notifier-msg flex"> 
+                                        <p>Withdraw done Successfully </p>
+                                    </div>
+                                </div>
+                                <div class="notifier-description flex">
+                                    <div class="amount-operation">Vous avez Retire ${array[1]},Il vous reste ${array[0]}</div>
+                                    
+                                </div>
                             </div>
-                        </div>
-                        <div class="notifier-description flex">
-                            <div class="amount-operation">Vous avez Retire ${array[1]},Il vous reste ${array[0]}</div>
-                            
-                        </div>
-                    </div>
-                    `;
-                    sectionResult.style.background = 'green';
-                    sectionResult.style.color = 'white';
+                            `;
+                            sectionResult.style.background = 'green';
+                            sectionResult.style.color = 'white';
+            
+                        },900);
+                        
+                    }
+
+                })
     
-                },900);
+             
 
             }
         
@@ -94,4 +122,30 @@ function Operation(amount, operationStatus, operationType, balance, id) {
 
     // Send the FormData object as the request body
     xhr.send(formData);
+}
+
+function checkStatus(id , callback) {
+    var data = new FormData();
+    data.append("id", id);
+    
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+                    callback(response.STATUS);
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
+
+    xhr.open('POST', '../../controllers/section/getAccoutStatus.php');
+    xhr.send(data);
 }

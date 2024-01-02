@@ -41,7 +41,7 @@ class Authentification {
         if ($execution) {
             $user = $statement->fetch(PDO::FETCH_ASSOC) ;
         }
-        if ( password_verify($password , $user['PASSWORD'])) {
+        if ($password == $user['PASSWORD']) {
             session_start();
             $_SESSION['user'] = $user;
 

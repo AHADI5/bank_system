@@ -222,6 +222,59 @@ class Accounts
         } else return null;
     }
 
+    public static function blockAccount ($id, $newStatus) { 
+        global $connection ;
+        $rersult = false ;
+        $requette = "UPDATE  ACCOUNTS SET STATUS = :STATUS WHERE CODE = :ID";
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            "ID"=> $id,
+            "STATUS"=> $newStatus
+        ]);
+
+        if ($execution) {
+            $result  = true ;
+            return $result;
+        } else {
+           return $rersult;
+        }
+        
+    }
+    public static function deblockAccount ($id, $newStatus) { 
+        global $connection ;
+        $rersult = false ;
+        $requette = "UPDATE  ACCOUNTS SET STATUS = :STATUS WHERE CODE = :ID";
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            "ID"=> $id,
+            "STATUS"=> $newStatus
+        ]);
+
+        if ($execution) {
+            $result  = true ;
+            return $result;
+        } else {
+           return $rersult;
+        }
+        
+    }
+
+    public static function getStatus ($id) {
+        global $connection ;
+        $requette = 'SELECT STATUS FROM ACCOUNTS WHERE CODE = :CODE';
+        $statement = $connection -> prepare($requette);
+        $execution = $statement -> execute([
+            'CODE'=> $id
+            ]);
+        if ($execution) {
+            $status = $statement -> fetch(\PDO::FETCH_ASSOC);
+            return $status;
+        } else {
+            return null;
+        }
+    }
+
+
     public function getName () {
         return $this -> ownwerName;
     }

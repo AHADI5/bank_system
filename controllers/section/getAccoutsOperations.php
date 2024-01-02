@@ -21,14 +21,17 @@ for ($i = 0; $i < count($cours); $i++) {
 
 
     echo  <<< __END
-    <div class="student-name-promotion">
-    <div class="name">$balance $devise</div>
-    <div class="promotion ">
-        <span class="prom">$nom $firstName</span>
+    <div class="student-name-promotion flex">
+        <div class="info-header">
+            <div class="name">$balance $devise</div>
+            <div class="promotion ">
+                <span class="prom">$nom $firstName</span>
+            </div>
+        </div>
+        <div class="block-account"><button class="block" id="1">Bloquer</button></div>
+            
     </div>
     
-    
-    </div>
 __END;
 }
 

@@ -3,7 +3,7 @@
 
   $serverName = 'localhost';
   $userName = 'root';
-  $passWord = 'root';
+  $passWord = '';
   $databaseName = 'bank_system';
 
   try {

@@ -29,7 +29,7 @@
                 <div class="informations flex">
                     <div class="personal-info">
                         <div class="info">
-                            <input type="text" name="idCompte" id="idCompte" placeholder="Id">
+                            <input type="number" name="idCompte" id="idCompte" placeholder="Id">
                         </div>
                         <div class="info">
                             <input type="text" name="montant" id="montant" placeholder="Montant">

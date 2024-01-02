@@ -17,6 +17,6 @@ $user = Authentification::login($userName, $password);
 
 
 if ($user) {
-    echo "window.location.href = '../../views/sectionAccount/sectionDash.php';";
+    echo "window.location.href = '../../views/sectionAccount/comptes.php';";
     exit();
 }

@@ -40,10 +40,7 @@ function Courses() {
                     let number = parent.querySelector(".code");
                     console.log("The text is " + number.innerText);
                     getOperations(number.innerText);
-                    getFullAccounInfo(number.innerText);
-                    
-
-                 
+                    getFullAccounInfo(number.innerText); 
                 })
 
             })
@@ -67,7 +64,7 @@ function getOperations(id) {
             console.log("response",xhr.response,"end Answer");
             let operationContent = document.querySelector(".operation")
             operationContent.innerHTML =  xhr.response;
-          
+           
 
         } else {
             console.log("request failed");
@@ -86,6 +83,14 @@ function getFullAccounInfo(id) {
             console.log("response",xhr.response,"end Answer");
             let operationContent = document.querySelector(".fullInformations")
             operationContent.innerHTML =  xhr.response;
+            let blockButton = document.querySelector(".block");
+            checkStatus(id, (status) => {
+                if (status === 0) {
+                    blockButton.innerText = 'Debloquer';
+                } else {
+                    blockButton.innerText = 'Bloquer';
+                }
+            })
             var history = document.querySelectorAll(".history");
             console.log(history);
             for (let index = 0; index < history.length; index++) {
@@ -103,9 +108,29 @@ function getFullAccounInfo(id) {
                     `;
                     element.querySelector(".icon").style.color = 'green';
                 }
+               
+              
              
                 
             }
+           
+         
+            blockButton.addEventListener("click" , () =>{
+                
+                checkStatus(id, (status) => {
+                    if (status === 0) {
+                        DebloquerAccount(id)
+                        blockButton.innerText = 'Bloquer';
+                        blockButton.style.backgroundColor  = "red";
+                    } else {
+                        blockAccount(id);
+                        blockButton.style.backgroundColor  = "blue";
+                        blockButton.innerText = 'Debloquer';
+                    }
+                })
+           
+        
+            }) 
         } else {
             console.log("request failed");
         }
@@ -113,4 +138,63 @@ function getFullAccounInfo(id) {
     xhr.open('GET', `../../controllers/section/getAccoutsOperations.php?id=${id}`);
     xhr.send(null);
     
+}
+
+
+function blockAccount(id) {
+    let xhr  = new XMLHttpRequest();
+    let data = new FormData();
+    data.append("id", id);
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+          
+        } else {
+            console.log("request failed");
+        }
+    }
+    xhr.open('POST', `../../controllers/section/blockAccount.php`);
+    xhr.send(data);
+}
+
+function DebloquerAccount(id) {
+    let xhr  = new XMLHttpRequest();
+    let data = new FormData();
+    data.append("id", id);
+    xhr.onreadystatechange= function() {
+        if((xhr.readyState===4)&& (xhr.status===200)){
+            console.log("response",xhr.response,"end Answer");
+          
+        } else {
+            console.log("request failed");
+        }
+    }
+    xhr.open('POST', `../../controllers/section/debloquer.php`);
+    xhr.send(data);
+}
+
+function checkStatus(id , callback) {
+    var data = new FormData();
+    data.append("id", id);
+    
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Response:", response);
+                    callback(response.STATUS);
+                } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                }
+            } else {
+                console.error("Request failed with status:", xhr.status);
+            }
+        }
+    };
+
+    xhr.open('POST', '../../controllers/section/getAccoutStatus.php');
+    xhr.send(data);
 }

@@ -272,3 +272,19 @@ tr:nth-child(odd) {
     height: 400px;
     overflow: scroll;
 }
+.student-name-promotion {
+    justify-content: space-between;
+}
+
+.block-account  button{ 
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: red;
+    color: white;
+    
+}
+
+.blocked {
+    opacity: 0.5;
+}

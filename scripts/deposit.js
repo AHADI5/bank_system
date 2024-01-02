@@ -31,28 +31,27 @@ function sendDat(form) {
                 }
 
                 Operation(array[1],status,operation,array[0], array[2]);
-                setTimeout(() =>{
-                    sectionResult.innerHTML = 
-                    `
-                    <div class="notifier">
-                        <div class="notifier-message flex"> 
-                            <div class= "il-icon flex" >
-                                <img src="../../imgs/icons8-deposit-64.png" alt="">
-                            </div>
-                            <div class="notifier-msg flex"> 
-                                <p>Deposit done Successfully </p>
-                            </div>
+                sectionResult.innerHTML = 
+                `
+                <div class="notifier">
+                    <div class="notifier-message flex"> 
+                        <div class= "il-icon flex" >
+                            <img src="../../imgs/icons8-deposit-64.png" alt="">
                         </div>
-                        <div class="notifier-description flex">
-                            <div class="amount-operation">Vous avez Deposer ${array[1]}, Votre solde est de${array[0]}</div>
-                            
+                        <div class="notifier-msg flex"> 
+                            <p>Deposit done Successfully </p>
                         </div>
                     </div>
-                    `;
-                    // sectionResult.style.background = 'rgb(216, 232, 191);';
-                    // sectionResult.style.color = 'white';
-
-                },900);
+                    <div class="notifier-description flex">
+                        <div class="amount-operation">Vous avez Deposer ${array[1]}, Votre solde est de${array[0]}</div>
+                        
+                    </div>
+                </div>
+                `;
+                
+                setTimeout(() =>{
+                    sectionResult.style.display = "none";
+                },2000);
            }
             
         } else {
